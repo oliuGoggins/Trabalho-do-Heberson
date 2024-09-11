@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estruturas de Dados - B-tree, Hash e Bitmap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        /* Estilo da seção de alunos */
+        #alunos-section {
+            background-color: #e0f7fa;
+            padding: 20px;
+            margin: 20px;
+            border: 2px solid #00796b;
+            border-radius: 5px;
+        }
+        #alunos-section h3 {
+            color: #00796b;
+            text-align: center;
+        }
+        #alunos-section input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #00796b;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Explicação sobre Estruturas de Dados</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#btree" onclick="showSection('btree')">B-tree</a></li>
+        <li><a href="#hash" onclick="showSection('hash')">Hash</a></li>
+        <li><a href="#bitmap" onclick="showSection('bitmap')">Bitmap</a></li>
+        <li><a href="#alunos-section" onclick="showSection('alunos-section')">Alunos</a></li>
+    </ul>
+</nav>
+
+<section id="btree">
+    <h2>B-tree</h2>
+    <p>O que é uma B-Tree? Imagine um grande livro de telefone. Para encontrar um número, você não precisa ler todas as páginas, certo? Você usa o índice no início do livro. As B-Trees funcionam de forma similar, mas para computadores! Elas são estruturas de dados muito eficientes para armazenar e buscar grandes conjuntos de dados, como aqueles encontrados em bancos de dados.</p>
+    <img src="btree.jpg" alt="Descrição da imagem" width="300">
+
+    <p><strong>Por que as B-Trees são importantes?</strong><br>
+    Busca Rápida: Assim como um índice, as B-Trees permitem que os computadores encontrem informações rapidamente, mesmo em conjuntos de dados gigantescos. Isso é crucial para sites que precisam responder às suas requisições de forma ágil.</p>
+    <p>Organização: As B-Trees mantêm os dados ordenados de forma eficiente, facilitando a inserção, remoção e busca de informações.</p>
+    <p>Balanceamento: As B-Trees se ajustam automaticamente para manter o balanceamento, garantindo que as buscas continuem rápidas mesmo quando novos dados são adicionados ou removidos.</p>
+    <p><strong>Como as B-Trees funcionam?</strong><br>
+    Nós: Uma B-Tree é composta por nós, que são como pequenas caixas que armazenam informações.</p>
+    <p>Chaves: Cada nó contém chaves (como nomes ou números) que dividem os dados em diferentes partes.</p>
+    <p>Ponteiros: Os nós também contêm ponteiros para outros nós, formando uma estrutura em árvore.</p>
+</section>
+
+<<section id="hash" class="hidden">
+    <h2>Hash</h2>
+    <p><strong>O que é um Hash?</strong></p>
+    <p>Imagine que você tem um documento gigante e precisa de uma forma rápida de verificar se ele foi alterado. Você poderia criar uma espécie de "impressão digital" desse documento, um código único que represente todo o seu conteúdo. Essa "impressão digital" é o que chamamos de hash.</p>
+    <p>Um hash é uma função matemática que transforma qualquer conjunto de dados (um texto, uma imagem, um arquivo, etc.) em uma sequência de caracteres de tamanho fixo. Essa sequência é única para aquele conjunto de dados específico e é quase impossível gerar dois hashes iguais para dados diferentes.</p>
+    <img src="hash.jpg" alt="Descrição da imagem" width="300">
+
+    <h3>Como funciona?</h3>
+    <p>
+        <strong>Entrada:</strong> Qualquer tipo de dado pode ser usado como entrada para uma função hash.<br>
+        <strong>Processamento:</strong> A função hash aplica um algoritmo complexo aos dados de entrada.<br>
+        <strong>Saída:</strong> O resultado é uma string de caracteres de tamanho fixo, o hash.
+    </p>
+
+    <h3>Por que os hashes são importantes?</h3>
+    <p>
+        <strong>Integridade de dados:</strong> Ao comparar o hash de um arquivo original com o hash de uma cópia, você pode verificar se o arquivo foi alterado. Se os hashes forem diferentes, significa que o arquivo foi modificado.<br>
+        <strong>Segurança:</strong> Os hashes são amplamente utilizados em criptografia para armazenar senhas de forma segura. A senha original não é armazenada, mas sim o seu hash. Quando você digita a senha novamente, o sistema calcula o hash e compara com o hash armazenado. Se os hashes coincidirem, a senha está correta.<br>
+        <strong>Blockchain:</strong> A tecnologia blockchain utiliza hashes para criar um registro imutável de transações. Cada bloco da blockchain contém um hash do bloco anterior, criando uma cadeia de blocos interligados.
+    </p>
+
+    <h3>Características dos hashes:</h3>
+    <ul>
+        <li><strong>Determinístico:</strong> O mesmo dado sempre produzirá o mesmo hash.</li>
+        <li><strong>Rápido de calcular:</strong> A geração de um hash é um processo rápido, mesmo para grandes conjuntos de dados.</li>
+        <li><strong>Impossível inverter:</strong> A partir do hash, é praticamente impossível determinar os dados originais.</li>
+        <li><strong>Resistente a colisões:</strong> É extremamente difícil encontrar dois conjuntos de dados diferentes que gerem o mesmo hash.</li>
+    </ul>
+
+    <h3>Tipos de funções hash:</h3>
+    <ul>
+        <li><strong>MD5:</strong> Um dos primeiros algoritmos de hash, mas considerado inseguro para muitas aplicações.</li>
+        <li><strong>SHA-1:</strong> Sucessor do MD5, também considerado inseguro em algumas situações.</li>
+        <li><strong>SHA-256:</strong> Um algoritmo mais seguro e amplamente utilizado, especialmente em criptomoedas como o Bitcoin.</li>
+        <li><strong>SHA-3:</strong> A mais recente família de funções hash, considerada mais segura que as anteriores.</li>
+    </ul>
+
+    <h3>Em resumo:</h3>
+    <p>Os hashes são ferramentas poderosas com diversas aplicações, desde a verificação da integridade de arquivos até a segurança de sistemas. Sua capacidade de gerar uma representação única e compacta de qualquer conjunto de dados os torna essenciais em diversas áreas da tecnologia.</p>
+
+    <p>Gostaria de saber mais sobre algum aspecto específico dos hashes? Posso explicar como os hashes são utilizados na tecnologia blockchain, como escolher o algoritmo de hash adequado para uma determinada aplicação, ou como os hashes são usados para armazenar senhas de forma segura.</p>
+</section>
+
+
+<section id="bitmap" class="hidden">
+    <h2>Bitmap</h2>
+    <p><strong>O que é um Bitmap?</strong></p>
+    <p>Imagine uma imagem como um mosaico. Cada pedacinho desse mosaico é um quadrado minúsculo de uma única cor, chamado pixel. Um bitmap é justamente essa representação digital de uma imagem, onde cada pixel é armazenado individualmente, formando uma grade.</p>
+    <img src="bit.jpg" alt="Descrição da imagem" width="300">
+
+    <h3>Como funciona?</h3>
+    <p>
+        <strong>Pixels:</strong> A imagem é dividida em milhares (ou milhões) de pixels, cada um com uma posição específica na grade.<br>
+        <strong>Cores:</strong> Cada pixel possui uma cor atribuída, que pode variar de preto a branco ou em uma ampla gama de cores, dependendo da profundidade de cor da imagem.<br>
+        <strong>Resolução:</strong> A resolução de uma imagem bitmap é determinada pelo número de pixels na horizontal e na vertical. Quanto maior a resolução, mais detalhes a imagem pode conter.
+    </p>
+
+    <h3>Vantagens e desvantagens:</h3>
+    <p><strong>Vantagens:</strong></p>
+    <ul>
+        <li><strong>Realismo:</strong> Bitmaps são excelentes para representar imagens fotográficas e outras imagens com muitos detalhes e gradientes de cor.</li>
+        <li><strong>Formatos populares:</strong> Muitos formatos de imagem comuns, como JPEG, PNG e BMP, são baseados em bitmaps.</li>
+    </ul>
+    <p><strong>Desvantagens:</strong></p>
+    <ul>
+        <li><strong>Tamanho de arquivo:</strong> Imagens bitmap podem gerar arquivos grandes, especialmente em alta resolução.</li>
+        <li><strong>Qualidade ao redimensionar:</strong> Ao aumentar o tamanho de uma imagem bitmap, os pixels ficam maiores e a imagem pode perder qualidade, apresentando um efeito "pixelado".</li>
+        <li><strong>Perda de detalhes:</strong> Alguns formatos de bitmap com compressão (como JPEG) podem causar perda de detalhes ao serem salvos e reabertos.</li>
+    </ul>
+
+    <h3>Quando usar bitmaps?</h3>
+    <ul>
+        <li><strong>Fotos:</strong> Imagens capturadas por câmeras digitais e smartphones.</li>
+        <li><strong>Gráficos complexos:</strong> Imagens com muitos detalhes, como pinturas digitais e ilustrações realistas.</li>
+        <li><strong>Imagens para impressão:</strong> Bitmaps são ideais para impressão, pois permitem uma reprodução precisa das cores e detalhes.</li>
+    </ul>
+
+    <h3>Tipos de bitmap:</h3>
+    <ul>
+        <li><strong>Indexados:</strong> Cada pixel possui um índice que aponta para uma cor em uma paleta.</li>
+        <li><strong>Verdadeiros:</strong> Cada pixel armazena todas as informações de cor diretamente, sem usar uma paleta.</li>
+    </ul>
+
+    <h3>Em resumo:</h3>
+    <p>Um bitmap é uma representação digital de uma imagem composta por pixels. É a forma mais comum de armazenar imagens digitais e é ideal para fotos e gráficos complexos. No entanto, suas desvantagens incluem o tamanho de arquivo grande e a perda de qualidade ao redimensionar.</p>
+
+    <h3>Para que serve um bitmap?</h3>
+    <ul>
+        <li><strong>Exibição em telas:</strong> Imagens em sites, aplicativos e sistemas operacionais.</li>
+        <li><strong>Impressão:</strong> Produção de materiais impressos, como fotos, posters e livros.</li>
+        <li><strong>Edição de imagens:</strong> Softwares de edição de imagem como Photoshop utilizam bitmaps como formato principal.</li>
+    </ul>
+
+    <h3>Qual a diferença entre bitmap e vetor?</h3>
+    <p>Enquanto um bitmap representa uma imagem pixel a pixel, uma imagem vetorial é composta por formas geométricas definidas matematicamente. As imagens vetoriais podem ser redimensionadas sem perder qualidade, mas não são tão realistas quanto as bitmaps.</p>
+
+    <p>Gostaria de saber mais sobre algum aspecto específico dos bitmaps? Posso explicar com mais detalhes sobre os diferentes formatos de bitmap, como a profundidade de cor influencia a qualidade da imagem, ou como os bitmaps são utilizados em diferentes aplicações.</p>
+</section>
+
+<section id="alunos-section" class="hidden">
+    <h2>Nomes de Alunos</h2>
+    <h3>Hillário Nunes de Lima</h3>
+    <h3>Luana Tex</h3>
+    <h3>João Gabriel</h3>
+    <h3>Kauã Rocha de Oliveira</h3>
+</section>
+
+<script>
+    function showSection(sectionId) {
+        var sections = document.querySelectorAll('section');
+        sections.forEach(function(section) {
+            section.classList.add('hidden');
+        });
+        document.getElementById(sectionId).classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>
